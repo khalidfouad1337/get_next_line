@@ -6,7 +6,7 @@
 /*   By: kfouad < kfouad@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 19:25:01 by kfouad            #+#    #+#             */
-/*   Updated: 2022/11/28 18:50:59 by kfouad           ###   ########.fr       */
+/*   Updated: 2022/11/28 19:10:10 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	while (s[i])
 		i++;
 	return (i);
@@ -53,13 +55,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	p = (char *)malloc(((ft_strlen(s1) + ft_strlen(s2)) + 1) * sizeof(char));
 	if (!p)
 		return (NULL);
-	if(s1)
+	while (s1[i])
 	{
-		while (s1[i])
-		{
-			p[i] = s1[i];
-			i++;
-		}
+		p[i] = s1[i];
+		i++;
 	}
 	while (s2[j])
 	{
@@ -67,8 +66,6 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	p[i + j] = '\0';
-	if(s1)
-		free(s1);
 	return (p);
 }
 
