@@ -6,27 +6,25 @@
 /*   By: kfouad < kfouad@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 19:25:01 by kfouad            #+#    #+#             */
-/*   Updated: 2022/11/29 17:06:02 by kfouad           ###   ########.fr       */
+/*   Updated: 2022/11/29 21:44:53 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"get_next_line.h"
 
-char	*ft_strchr(const char	*s, int c)
+char	*ft_strchr(char	*save, int c)
 {
-	char	*s1;
 	int		i;
 	int		a;
 
 	i = 0;
-	if (!s)
+	if (!save)
 		return (0);
-	s1 = (char *)s;
-	a = ft_strlen(s1);
+	a = ft_strlen(save);
 	while (i <= a)
 	{
-		if (s1[i] == (char)c)
-			return (&s1[i]);
+		if (save[i] == (char)c)
+			return (&save[i]);
 		i++;
 	}
 	return (0);
@@ -44,31 +42,32 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *save, char *buf)
 {
-	char	*p;
+	char	*line;
 	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
-	p = (char *)malloc(((ft_strlen(s1) + ft_strlen(s2)) + 1) * sizeof(char));
-	if (!p)
+	line = (char *)malloc(((ft_strlen(save) + ft_strlen(buf)) \
+	+ 1) * sizeof(char));
+	if (!line)
 		return (NULL);
-	while (s1 && s1[i])
+	while (save && save[i])
 	{
-		p[i] = s1[i];
+		line[i] = save[i];
 		i++;
 	}
-	while (s2[j])
+	while (buf[j])
 	{
-		p[i + j] = s2[j];
+		line[i + j] = buf[j];
 		j++;
 	}
-	p[i + j] = '\0';
-	if (s1)
-		free(s1);
-	return (p);
+	line[i + j] = '\0';
+	if (save)
+		free(save);
+	return (line);
 }
 
 char	*newline(char *save)
