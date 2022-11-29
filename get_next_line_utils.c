@@ -6,7 +6,7 @@
 /*   By: kfouad < kfouad@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 19:25:01 by kfouad            #+#    #+#             */
-/*   Updated: 2022/11/28 19:10:10 by kfouad           ###   ########.fr       */
+/*   Updated: 2022/11/29 17:06:02 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strchr(const char	*s, int c)
 	int		a;
 
 	i = 0;
+	if (!s)
+		return (0);
 	s1 = (char *)s;
 	a = ft_strlen(s1);
 	while (i <= a)
@@ -50,12 +52,10 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	i = 0;
 	j = 0;
-	if (!s1 || !s2)
-		return (0);
 	p = (char *)malloc(((ft_strlen(s1) + ft_strlen(s2)) + 1) * sizeof(char));
 	if (!p)
 		return (NULL);
-	while (s1[i])
+	while (s1 && s1[i])
 	{
 		p[i] = s1[i];
 		i++;
@@ -66,6 +66,8 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	p[i + j] = '\0';
+	if (s1)
+		free(s1);
 	return (p);
 }
 
@@ -75,6 +77,8 @@ char	*newline(char *save)
 	int		i;
 
 	i = 0;
+	if (!save[i])
+		return (0);
 	while (save[i] && save[i] != '\n')
 		i++;
 	if (save[i] == '\n')
@@ -101,12 +105,17 @@ char	*cutline(char *save)
 {
 	char	*cut;
 	int		i;
-	int		y;
+	int		j;
 
 	i = 0;
-	y = 0;
+	j = 0;
 	while (save[i] && save[i] != '\n')
 		i++;
+	if (!save[i])
+	{
+		free(save);
+		return (0);
+	}
 	if (save[i] == '\n')
 		i++;
 	cut = malloc((ft_strlen(save) - i) * sizeof(char));
@@ -114,10 +123,11 @@ char	*cutline(char *save)
 		return (NULL);
 	while (save[i])
 	{
-		cut[y] = save[i];
+		cut[j] = save[i];
 		i++;
-		y++;
+		j++;
 	}
-	cut[y] = '\0';
+	cut[j] = '\0';
+	free(save);
 	return (cut);
 }

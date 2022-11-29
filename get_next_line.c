@@ -6,7 +6,7 @@
 /*   By: kfouad < kfouad@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:50:57 by kfouad            #+#    #+#             */
-/*   Updated: 2022/11/28 18:00:54 by kfouad           ###   ########.fr       */
+/*   Updated: 2022/11/29 17:25:21 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,30 @@
 char	*get_next_line(int fd)
 {
 	static char	*save;
-	char		*s;
+	char		s[BUFFER_SIZE + 1];
 	char		*line;
 	int			readline;
 
-	s = malloc(BUFFER_SIZE + 1);
-	if (!s)
-		return (NULL);
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd == 1 || fd == 2)
+		return (0);
 	readline = 1;
-	while (readline > 0 && !ft_strchr(save, '\n'))
+	while (readline && !ft_strchr(save, '\n'))
 	{
 		readline = read(fd, s, BUFFER_SIZE);
+		if (readline < 0)
+		{
+			free(save);
+			return (0);
+		}
 		s[readline] = '\0';
 		save = ft_strjoin(save, s);
 	}
-	line = newline(save);
-	save = cutline(save);
-	return (line);
+	if (ft_strlen(save) >= 0 && readline >= 0)
+	{
+		line = newline(save);
+		save = cutline(save);
+		return (line);
+	}
+	free(save);
+	return (NULL);
 }

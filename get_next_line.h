@@ -6,7 +6,7 @@
 /*   By: kfouad < kfouad@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 20:21:32 by kfouad            #+#    #+#             */
-/*   Updated: 2022/11/28 18:44:52 by kfouad           ###   ########.fr       */
+/*   Updated: 2022/11/28 21:47:52 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdlib.h>
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 6
+# define BUFFER_SIZE 50
 #endif
 
 char	*get_next_line(int fd);
