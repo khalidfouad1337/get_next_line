@@ -6,7 +6,7 @@
 /*   By: kfouad < kfouad@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 19:25:01 by kfouad            #+#    #+#             */
-/*   Updated: 2022/11/29 21:44:53 by kfouad           ###   ########.fr       */
+/*   Updated: 2022/11/30 18:42:11 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,9 @@ char	*newline(char *save)
 		i++;
 	}
 	if (save[i] == '\n')
-	{
 		line[i] = save[i];
+	if (save[i] == '\n')
 		i++;
-	}
 	line[i] = '\0';
 	return (line);
 }
@@ -117,15 +116,11 @@ char	*cutline(char *save)
 	}
 	if (save[i] == '\n')
 		i++;
-	cut = malloc((ft_strlen(save) - i) * sizeof(char));
+	cut = malloc((ft_strlen(save) - i + 1) * sizeof(char));
 	if (!cut)
 		return (NULL);
 	while (save[i])
-	{
-		cut[j] = save[i];
-		i++;
-		j++;
-	}
+		cut[j++] = save[i++];
 	cut[j] = '\0';
 	free(save);
 	return (cut);
