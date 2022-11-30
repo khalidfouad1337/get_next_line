@@ -6,7 +6,7 @@
 /*   By: kfouad < kfouad@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 20:21:32 by kfouad            #+#    #+#             */
-/*   Updated: 2022/11/30 18:39:09 by kfouad           ###   ########.fr       */
+/*   Updated: 2022/11/30 19:29:54 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 char	*get_next_line(int fd);
 char	*ft_strchr(char	*save, int c);
-size_t	ft_strlen(const char *s);
+size_t	ft_strlen(char *s);
 char	*ft_strjoin(char *save, char *buf);
 char	*newline(char *save);
 char	*cutline(char *save);

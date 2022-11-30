@@ -6,7 +6,7 @@
 /*   By: kfouad < kfouad@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 19:25:01 by kfouad            #+#    #+#             */
-/*   Updated: 2022/11/30 18:42:11 by kfouad           ###   ########.fr       */
+/*   Updated: 2022/11/30 19:38:38 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_strchr(char	*save, int c)
 	return (0);
 }
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen(char *s)
 {
 	size_t	i;
 
@@ -107,13 +107,13 @@ char	*cutline(char *save)
 
 	i = 0;
 	j = 0;
-	while (save[i] && save[i] != '\n')
-		i++;
 	if (!save[i])
 	{
 		free(save);
 		return (0);
 	}
+	while (save[i] && save[i] != '\n')
+		i++;
 	if (save[i] == '\n')
 		i++;
 	cut = malloc((ft_strlen(save) - i + 1) * sizeof(char));
