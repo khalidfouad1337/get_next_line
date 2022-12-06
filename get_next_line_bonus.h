@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfouad < kfouad@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 14:41:06 by kfouad            #+#    #+#             */
-/*   Updated: 2022/12/02 17:17:07 by kfouad           ###   ########.fr       */
+/*   Created: 2022/12/06 19:28:44 by kfouad            #+#    #+#             */
+/*   Updated: 2022/12/06 20:10:30 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 
-int	main(void)
-{
-	int		fd;
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-	fd = open("test.txt", O_RDONLY);
-	printf("%s%d", get_next_line(fd),fd);
-	printf("%s%d", get_next_line(fd),fd);
-	//printf("%s", get_next_line(fd));
-	//printf("%s", get_next_line(fd));
-	//printf("%s", get_next_line(fd));
-	//printf("%s", get_next_line(fd));
-	//printf("%s", get_next_line(fd));
-	//return (0);
-}
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <limits.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100
+# endif
+
+char	*get_next_line(int fd);
+char	*ft_strchr(char	*save, int c);
+size_t	ft_strlen(char *s);
+char	*ft_strjoin(char *save, char *buf);
+char	*newline(char *save);
+char	*cutline(char *save);
+
+#endif

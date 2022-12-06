@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfouad < kfouad@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 19:25:01 by kfouad            #+#    #+#             */
-/*   Updated: 2022/12/02 22:34:31 by kfouad           ###   ########.fr       */
+/*   Created: 2022/12/05 17:56:30 by kfouad            #+#    #+#             */
+/*   Updated: 2022/12/06 20:22:32 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"get_next_line.h"
+#include"get_next_line_bonus.h"
 
 char	*ft_strchr(char	*save, int c)
 {
@@ -83,17 +83,17 @@ char	*newline(char *save)
 		i++;
 	line = malloc((i + 1) * sizeof(char));
 	if (!line)
-		return (NULL);
-	i = 0;
+		return (0);
 	while (save[i] && save[i] != '\n')
 	{
 		line[i] = save[i];
 		i++;
 	}
 	if (save[i] == '\n')
+	{
 		line[i] = save[i];
-	if (save[i] == '\n')
 		i++;
+	}
 	line[i] = '\0';
 	return (line);
 }
@@ -117,7 +117,7 @@ char	*cutline(char *save)
 		i++;
 	cut = malloc((ft_strlen(save) - i + 1) * sizeof(char));
 	if (!cut)
-		return (NULL);
+		return (0);
 	while (save[i])
 		cut[j++] = save[i++];
 	cut[j] = '\0';

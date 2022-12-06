@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfouad < kfouad@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/28 16:50:57 by kfouad            #+#    #+#             */
-/*   Updated: 2022/12/05 17:31:49 by kfouad           ###   ########.fr       */
+/*   Created: 2022/12/05 17:36:23 by kfouad            #+#    #+#             */
+/*   Updated: 2022/12/06 21:52:16 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_read(int fd, char *save)
 {
-	int			readline;
-	char		buf[BUFFER_SIZE + 1];
+	char	buf[BUFFER_SIZE + 1];
+	int		readline;
 
 	readline = 1;
 	while (readline > 0 && !ft_strchr(save, '\n'))
@@ -26,30 +26,26 @@ char	*ft_read(int fd, char *save)
 			free(save);
 			return (0);
 		}
-		//if (readline < 0)
-		//	break ;
 		buf[readline] = '\0';
 		save = ft_strjoin(save, buf);
 	}
-	//if (!str)
-	//	return (0);
 	return (save);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*save;
+	static char	*save[10240];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd == 1 || fd == 2)
 		return (0);
-	save = ft_read(fd, save);
-	if (!save)
+	save[fd] = ft_read(fd, save[fd]);
+	if (!save[fd])
 		return (0);
-	if (ft_strlen(save) >= 0)
+	if (ft_strlen(save[fd]) >= 0)
 	{
-		line = newline(save);
-		save = cutline(save);
+		line = newline(save[fd]);
+		save[fd] = cutline(save[fd]);
 		return (line);
 	}
 	return (NULL);
