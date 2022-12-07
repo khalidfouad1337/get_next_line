@@ -6,7 +6,7 @@
 /*   By: kfouad < kfouad@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:36:23 by kfouad            #+#    #+#             */
-/*   Updated: 2022/12/06 21:52:16 by kfouad           ###   ########.fr       */
+/*   Updated: 2022/12/07 14:54:45 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_read(int fd, char *save)
 {
-	char	buf[BUFFER_SIZE + 1];
-	int		readline;
+	int			readline;
+	char		buf[BUFFER_SIZE + 1];
 
 	readline = 1;
 	while (readline > 0 && !ft_strchr(save, '\n'))

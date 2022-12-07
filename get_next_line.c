@@ -6,7 +6,7 @@
 /*   By: kfouad < kfouad@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 16:50:57 by kfouad            #+#    #+#             */
-/*   Updated: 2022/12/05 17:31:49 by kfouad           ###   ########.fr       */
+/*   Updated: 2022/12/07 14:54:25 by kfouad           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,9 @@ char	*ft_read(int fd, char *save)
 			free(save);
 			return (0);
 		}
-		//if (readline < 0)
-		//	break ;
 		buf[readline] = '\0';
 		save = ft_strjoin(save, buf);
 	}
-	//if (!str)
-	//	return (0);
 	return (save);
 }
 
